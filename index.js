@@ -1,6 +1,3 @@
-
-
-
 const htag = document.getElementById("htag")
 const c = 299792.458;
 
