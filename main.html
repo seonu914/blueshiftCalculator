@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> 30412 박선우 </title>
+    <script src="index.js" defer> </script>
+</head>
+<body>
+
+<!-- 본래 주파수 계산 -->
+<div>
+    <label>
+        <input id="velocity" placeholder="velocity (km/s)">
+        <input id="obs_frequency" placeholder="observed freq (THz)">
+    </label>
+    <button id="calc_origin_freq" onclick="calc_origin_freq()">calculate original freq</button>
+</div>
+
+<hr>
+
+<!-- 본래 속도 계산 -->
+<div>
+    <label>
+        <input id="s_frequency" placeholder="original freq (THz)">
+        <input id="obs_frequency1" placeholder="observed freq (THz)">
+    </label>
+    <button id="calc_speed" onclick="calc_speed()">calculate speed of source</button>
+</div>
+
+<hr>
+
+<!-- 관측되는 주파수 계산 -->
+<div>
+    <label>
+        <input id="s_frequency1" placeholder="original freq (THz)">
+        <input id="velocity1" placeholder="velocity (km/s)">
+    </label>
+    <button id="calc_obs_freq" onclick="
+        const res = rel_dopp_blue(
+            document.getElementById('s_frequency1').value,
+            document.getElementById('velocity1').value
+        );
+        console.log('Observed Frequency:', res, 'THz');
+    ">calculate observed frequency</button>
+</div>
+
+
+<div>
+    <h1 id="htag">TEST</h1>
+</div>
+
+</body>
+</html>
