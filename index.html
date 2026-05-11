@@ -56,12 +56,29 @@
     ">calculate observed frequency</button>
 </div>
 
+<hr>
+
+<!-- 적색편이 수치 계산 -->
+<div>
+    <label>
+        <input id="original_frequency" placeholder="original freq (THz)">
+        <input id="observed_frequency" placeholder="observed freq (THz)">
+    </label>
+    <button id="calc_z" onclick="
+        let res = calc_z(
+            document.getElementById('original_frequency').value,
+            document.getElementById('observed_frequency').value
+        )
+        document.getElementById('htag').innerHTML = 'z = ' + res
+    ">calculate observed frequency</button>
+</div>
+
 <div>
     <h1 id="htag">TEST</h1>
 </div>
 
 <div>
-    <img src="pyo.svg">
+    <img src="visible-light-spectrum.jpg" alt="pyo.svg">
 </div>
 
 </body>

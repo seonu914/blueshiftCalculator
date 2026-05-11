@@ -2,22 +2,36 @@ const c = 299792.458;
 
 function calc_origin_freq(vel, obs_f) {
 
-    vel = c * vel/100
+    if (vel > 100 || vel < -100) {
+        alert("속도는 -100 보다 크고 100 보다 작아야 합니다.")
+        return NaN
+    }
+
+    vel = -c * vel/100
 
     return obs_f/(Math.sqrt( (c+vel)/(c-vel) ))
 }
 
 function calc_speed(f, obs_f) {
-    let K = Math.pow(obs_f/f, 2)
-    console.log(K)
-    return c*(K-1)/(K+1)
+
+    let K = Math.pow(obs_f / f, 2);
+    return ((K - 1) / (K + 1)) * -100;
+
 }
 
+function calc_shifted_freq(f, vel) {
 
-function calc_shifted_freq(f, v) {
-    f *= 1e12
-    v = c * v/100
-    const result = Math.sqrt((c+v)/(c-v)) * f*1e-12
-    console.log(result)
-    return result
+    if (vel > 100 || vel < -100) {
+        alert("속도는 -100 보다 크고 100 보다 작아야 합니다.")
+        return NaN
+    }
+
+    vel = -c * vel/100
+
+    return Math.sqrt((c + vel) / (c - vel)) * f
+
+}
+
+function calc_z(f, obs_f) {
+    return (f-obs_f)/obs_f
 }
