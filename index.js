@@ -7,7 +7,7 @@ function calc_origin_freq(vel, obs_f) {
         return NaN
     }
 
-    vel = c * vel/100
+    vel = -c * vel/100
 
     return obs_f/(Math.sqrt( (c+vel)/(c-vel) ))
 }
@@ -26,7 +26,7 @@ function calc_shifted_freq(f, vel) {
         return NaN
     }
 
-    vel = c * vel/100
+    vel = -c * vel/100
 
     return Math.sqrt((c + vel) / (c - vel)) * f
 
