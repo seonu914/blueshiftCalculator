@@ -10,10 +10,16 @@
 <!-- 본래 주파수 계산 -->
 <div>
     <label>
-        <input id="velocity" placeholder="velocity (km/s)">
+        <input id="velocity" placeholder="velocity (% of c)">
         <input id="obs_frequency" placeholder="observed freq (THz)">
     </label>
-    <button id="calc_origin_freq" onclick="calc_origin_freq()">calculate original freq</button>
+    <button id="calc_origin_freq" onclick="
+    let res = calc_origin_freq(
+        document.getElementById('velocity').value,
+        document.getElementById('obs_frequency').value
+    )
+    document.getElementById('htag').innerHTML = res.toFixed(6) + 'THz'
+">calculate original freq</button>
 </div>
 
 <hr>
@@ -24,7 +30,13 @@
         <input id="s_frequency" placeholder="original freq (THz)">
         <input id="obs_frequency1" placeholder="observed freq (THz)">
     </label>
-    <button id="calc_speed" onclick="calc_speed()">calculate speed of source</button>
+    <button id="calc_speed" onclick="
+    let res = calc_speed(
+        document.getElementById('s_frequency').value,
+        document.getElementById('obs_frequency1').value
+    )
+    document.getElementById('htag').innerHTML = res
+">calculate speed of source</button>
 </div>
 
 <hr>
@@ -33,19 +45,23 @@
 <div>
     <label>
         <input id="s_frequency1" placeholder="original freq (THz)">
-        <input id="velocity1" placeholder="velocity (km/s)">
+        <input id="velocity1" placeholder="velocity (% of c)">
     </label>
     <button id="calc_obs_freq" onclick="
-        const res = rel_dopp_blue(
+    let res = calc_shifted_freq(
             document.getElementById('s_frequency1').value,
             document.getElementById('velocity1').value
-        );
-        console.log('Observed Frequency:', res, 'THz');
+            )
+    document.getElementById('htag').innerHTML = res.toFixed(6) + 'THz'
     ">calculate observed frequency</button>
 </div>
 
 <div>
     <h1 id="htag">TEST</h1>
+</div>
+
+<div>
+    <img src="pyo.svg">
 </div>
 
 </body>
